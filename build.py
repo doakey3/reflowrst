@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from calmjs.parse import es5
+import re
 
 def get_javascript(path):
     with open(path, "r") as f:
@@ -38,9 +39,11 @@ def main():
     for file in filelist:
         if not os.path.isfile(destination) or os.path.getctime(file) > os.path.getctime(destination):
             output = []
+            imports = {}
             for file in filelist:
                 js = get_javascript(file)
                 output.append(js)
+
             text = shell_text.replace("//CONTENTS", "\n".join(output))
 
             with open(destination, "w") as f:

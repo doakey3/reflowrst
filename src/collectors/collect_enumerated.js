@@ -211,7 +211,7 @@ var get_corrected_enumeration = function(lines, i) {
     return enumerator_body;
 };
 
-var get_betwixt = function(lines, i) {
+var get_enumerated_betwixt = function(lines, i) {
     /*
     Gets the space that should be between the enumerator and the text::
 
@@ -271,7 +271,7 @@ var collect_enumerated = function(lines, index) {
 
     lines[index] = leading_space + enumerator + " " + rest;
 
-    var betwixt = get_betwixt(lines, index);
+    var betwixt = get_enumerated_betwixt(lines, index);
 
     var output = [leading_space + enumerator + betwixt + rest];
 

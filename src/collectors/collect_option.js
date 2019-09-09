@@ -8,7 +8,7 @@ import space_fill from "../utils/space_fill.js";
 import begins_with from "../utils/begins_with.js";
 import regex_matches from "../utils/regex_matches.js";
 
-var get_betwixt = function(lines, i) {
+var get_option_betwixt = function(lines, i) {
     /*
     Gets the space that should be between the field name and the field
     text::
@@ -56,7 +56,7 @@ var get_betwixt = function(lines, i) {
 
 var collect_option = function(lines, index) {
     var leading_space = lines[index].replace(lstrip(lines[index]), '');
-    var betwixt = get_betwixt(lines, index);
+    var betwixt = get_option_betwixt(lines, index);
     var option_name = lstrip(lines[index].match(regex_matches["option"])[0]);
     var rest_of_first_line = lstrip(lines[index].substr((leading_space + option_name).length));
 

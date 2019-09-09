@@ -260,7 +260,7 @@ var get_corrected_enumeration = function(lines, i) {
     return enumerator_body;
 };
 
-var get_betwixt = function(lines, i) {
+var get_enumerated_betwixt = function(lines, i) {
     /*
     Gets the space that should be between the enumerator and the text::
 
@@ -320,7 +320,7 @@ var collect_enumerated = function(lines, index) {
 
     lines[index] = leading_space + enumerator + " " + rest;
 
-    var betwixt = get_betwixt(lines, index);
+    var betwixt = get_enumerated_betwixt(lines, index);
 
     var output = [leading_space + enumerator + betwixt + rest];
 
@@ -335,7 +335,7 @@ var collect_enumerated = function(lines, index) {
 
     return [output.join('\n'), i];
 }
-var get_betwixt = function(lines, i) {
+var get_field_betwixt = function(lines, i) {
     /*
     Gets the space that should be between the field name and the field
     text::
@@ -384,7 +384,7 @@ var get_betwixt = function(lines, i) {
 
 var collect_field = function(lines, index) {
     var leading_space = lines[index].replace(lstrip(lines[index]), '');
-    var betwixt = get_betwixt(lines, index);
+    var betwixt = get_field_betwixt(lines, index);
     var field_name = lstrip(lines[index].match(regex_matches["field"])[0]);
     var rest_of_first_line = lstrip(lines[index].substr((leading_space + field_name).length));
 
@@ -425,7 +425,7 @@ var collect_main_title = function(lines, index) {
     var output = [rstrip(lines[index]), rstrip(lines[index + 1]), rstrip(lines[index + 2])].join('\n');
     return [output, index + 3];
 }
-var get_betwixt = function(lines, i) {
+var get_option_betwixt = function(lines, i) {
     /*
     Gets the space that should be between the field name and the field
     text::
@@ -473,7 +473,7 @@ var get_betwixt = function(lines, i) {
 
 var collect_option = function(lines, index) {
     var leading_space = lines[index].replace(lstrip(lines[index]), '');
-    var betwixt = get_betwixt(lines, index);
+    var betwixt = get_option_betwixt(lines, index);
     var option_name = lstrip(lines[index].match(regex_matches["option"])[0]);
     var rest_of_first_line = lstrip(lines[index].substr((leading_space + option_name).length));
 
